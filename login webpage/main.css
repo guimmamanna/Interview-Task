@@ -29,3 +29,19 @@ max-height: 90px;
         text-align: center;
 
     }
+
+    /*login*/
+.row{
+    background-color: #ffffff;
+    border-radius: 40px;
+    box-shadow: 14px 14px 30px;
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
+    -ms-border-radius: 40px;
+    -o-border-radius: 40px;
+}
+.login img{
+    border-bottom-left-radius: 33px;
+    border-top-left-radius: 33px;
+
+}
