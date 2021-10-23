@@ -42,12 +42,14 @@ max-height: 90px;
     -o-border-radius: 40px;
 }
 .login img{
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-left: 4em;
     border-bottom-left-radius: 33px;
     border-top-left-radius: 33px;
-    
 
 }
-
 .login h1{
     font-size: 5rem;
     font-weight: 600;
@@ -66,7 +68,7 @@ max-height: 90px;
     -o-border-radius: 60px;
 }
 .img-login{
-    margin-top: 5em;
+    margin-top: 7em;
     margin-left: 4em;
 }
 .btn1{ height: 30px; width: auto; border: none; outline: none; border-radius: 60px; -webkit-border-radius: 60px; -moz-border-radius: 60px; -ms-border-radius: 60px; -o-border-radius: 60px; font-weight: 600; background-color: #004990; color: #ffffff;
