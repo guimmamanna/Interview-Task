@@ -36,15 +36,17 @@ if (intval($csv2[$row])){
     $in_row = $in_row +1;
     continue;
 }
-elseif ($csv2[$row][$in_row]) == "") 
+elseif($csv2[$row][$in_row] == "") 
  {
     $in_row = $in_row +1;
     continue;
 }
-elseif ($csv2[$row][$in_row]) == ",") 
-{
-    
+elseif($csv2[$row][$in_row] == ",") 
+$in_row = $in_row +1;
+    continue;
+
+
 }
- }
+ 
  $county->crop_code
 ?>
