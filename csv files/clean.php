@@ -1,4 +1,5 @@
 <?php
+include('class.php');
 //read csv file
 $file = file('harvest data - clean.csv');
 $error_log_file = fopen(".error_log_file.txt", "w");
@@ -28,9 +29,22 @@ for($row=0; $row<$row_length; $row++) {
 //End the sums
  print("table");
  print("<tr> <th> | County | </th> <th> | Crop Name | </th> |<th> | %Harvested | </th>");
- for($row = 0, $row<$row_length; $row++){
+ for($row = 0; $row<$row_length; $row++){
 //Check error
-
+if (intval($csv2[$row])){
+    fwrite($error_log_file, "There is an Error on line : ".($row+1).".". $csv2[$row][$in_row]. "There is an error with your Crop code. \n");
+    $in_row = $in_row +1;
+    continue;
+}
+elseif ($csv2[$row][$in_row]) == "") 
+ {
+    $in_row = $in_row +1;
+    continue;
+}
+elseif ($csv2[$row][$in_row]) == ",") 
+{
+    
+}
  }
-
+ $county->crop_code
 ?>
