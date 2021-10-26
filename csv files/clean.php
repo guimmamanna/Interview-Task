@@ -1,6 +1,6 @@
 <?php
 //read csv file
-$file = file('harvest data-clean.csv');
+$file = file('harvest data - clean.csv');
 $error_log_file = fopen(".error_log_file.txt", "w");
 //crop codes transform to name
 $var = new county('w', 'Wheat');
@@ -25,5 +25,7 @@ for($row=0; $row<$row_length; $row++) {
     $sum_of_county[$row] +=intval($csv2[$row][$value]);
     $value +=1;
 }
+//End the sums
+
 
 ?>
