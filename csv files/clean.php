@@ -19,6 +19,11 @@ $csv2[] = explode(',', $k);
 //sum up the crops of a county and give its percentage
 $sum_of_county = array();
 $row_length = count($csv2);
-for($row=0; $row<$row_length; $row++)
+for($row=0; $row<$row_length; $row++) {
+    if($value ==0){$value +=2;
+    }
+    $sum_of_county[$row] +=intval($csv2[$row][$value]);
+    $value +=1;
+}
 
 ?>
