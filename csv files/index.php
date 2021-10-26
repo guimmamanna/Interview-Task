@@ -2,7 +2,7 @@
 include('class.php');
 
 //read csv file
-$file = file("harvest_data_error.csv");
+$file = file("harvest_data_clean.csv");
 
 //Read Override csv file
 $override_file = file("override.csv");
