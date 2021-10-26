@@ -44,9 +44,15 @@ elseif($csv2[$row][$in_row] == "")
 elseif($csv2[$row][$in_row] == ",") 
 $in_row = $in_row +1;
     continue;
-
-
 }
+//verify county crop code names
+foreach($array_of_county as $county){
+    if(strtoupper($csv2[$row][$in_row]) == $county->crop_code)
+    {
+        $csv2[$row][$in_row] = $county->crop_name;
+    }
+}
+printf("<tr> <th>" .$csv2[$row][0][$in_row].)
  
- $county->crop_code
+ 
 ?>
