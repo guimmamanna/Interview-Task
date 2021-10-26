@@ -26,6 +26,11 @@ for($row=0; $row<$row_length; $row++) {
     $value +=1;
 }
 //End the sums
+ print("table");
+ print("<tr> <th> | County | </th> <th> | Crop Name | </th> |<th> | %Harvested | </th>");
+ for($row = 0, $row<$row_length; $row++){
+//Check error
 
+ }
 
 ?>
