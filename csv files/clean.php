@@ -21,15 +21,20 @@ $csv2[] = explode(',', $k);
 $sum_of_county = array();
 $row_length = count($csv2);
 for($row=0; $row<$row_length; $row++) {
-    if($value ==0){$value +=2;
+    $sum_of_county[$row] = 0;
+    for($value=0; $value<count($csv2[$row]); $value++){
+    if($value ==0){
+        $value +=2;
     }
     $sum_of_county[$row] +=intval($csv2[$row][$value]);
     $value +=1;
+}
 }
 //End the sums
  print("table");
  print("<tr> <th> | County | </th> <th> | Crop Name | </th> |<th> | %Harvested | </th>");
  for($row = 0; $row<$row_length; $row++){
+    for($in_row = 1; $in_row<$count($csv2[$row]); $in_row++){
 //Check error
 if (intval($csv2[$row])){
     fwrite($error_log_file, "There is an Error on line : ".($row+1).".". $csv2[$row][$in_row]. "There is an error with your Crop code. \n");
@@ -42,17 +47,22 @@ elseif($csv2[$row][$in_row] == "")
     continue;
 }
 elseif($csv2[$row][$in_row] == ",") 
+{
 $in_row = $in_row +1;
     continue;
 }
 //verify county crop code names
 foreach($array_of_county as $county){
-    if(strtoupper($csv2[$row][$in_row]) == $county->crop_code)
-    {
+    if(strtoupper($csv2[$row][$in_row]) == $county->crop_code){
+    
         $csv2[$row][$in_row] = $county->crop_name;
     }
 }
-printf("<tr> <th>" .$csv2[$row][0][$in_row].)
- 
+printf("<tr> <th>" .$csv2[$row][0]. "</th");
+printf("<th>".$csv2[$row][$in_row]." </th> <th> %.4s %% </th></tr>", (intval($csv2[$row][$in_row+1]) *100)/$sum_of_county[$row]);
+$in_row = $in_row+1;
+}
+}
+printf("</table>");
  
 ?>
