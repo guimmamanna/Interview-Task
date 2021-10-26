@@ -2,7 +2,8 @@
 include('class.php');
 //read csv file
 $file = file('harvest data - clean.csv');
-$error_log_file = fopen(".error_log_file.txt", "w");
+//open error log file
+$error_log_file = fopen('error_log_file.txt', 'w');
 //crop codes transform to name
 $var = new county('w', 'Wheat');
 $var2 = new county('B', 'Barley');
@@ -64,5 +65,5 @@ $in_row = $in_row+1;
 }
 }
 printf("</table>");
- 
+
 ?>
