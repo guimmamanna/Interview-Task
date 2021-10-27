@@ -77,12 +77,13 @@ crop_code_name('O', 'Oats');
 $override_array = csv_array($override_csv_file);
 
 //Get harvest array from harvest csv file
+$harvest_array = csv_array(($file);
 
-foreach ($file as $k)
-    //Obtain an array call csv2 from the csv file
-    $csv2[] = explode(', ', $k);
-    //sum up the crops of a county and give its percentage
-   $sum_per_county = array();
+//check if there is a duplicate in override file
+$csv2 = check_county_code($harvest_array, $override_array);
+
+//sum all the percentage of crops depending on county's
+$sum_per_county = array();
     $row_length = count($csv2);
     for($row=0; $row<$row_length; $row++){
        $sum_per_county[$row] = 0;
@@ -95,12 +96,13 @@ foreach ($file as $k)
         }
     }
     //End the sums
-
+ 
+    //Print output after analysis
     printf("<table>");
     print("<tr> <th>| County |</th> <th>| Crop Name |</th> <th>| Harvest Percent|</th>");
     for($row =0; $row<$row_length; $row++){
         for($in_row=1; $in_row<count($csv2[$row]); $in_row++){
-            //Check error
+            //Check error if data is a crop code
             if(intval($csv2[$row][$in_row])){
                 fwrite($error_log_file, "There is an Error on line  : ".($row+1)." , ". $csv2[$row][$in_row]. " its not a crop code. \n");
                 $in_row = $in_row+1;
@@ -113,7 +115,7 @@ foreach ($file as $k)
                 continue;
             }
 
-            //verify county crop code names
+            //Display county crop code names
             foreach($array_of_county_code as $sub_region){
                 if(strtoupper($csv2[$row][$in_row]) == $sub_region->crop_code){
                     $csv2[$row][$in_row] = $sub_region->crop_name;
