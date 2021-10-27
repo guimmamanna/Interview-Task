@@ -1,24 +1,42 @@
 <?php
 include('class.php');
 
-//read csv file
-$file = file("harvest_data_clean.csv");
+//Global variables
+$array_of_county_code = array();
 
-//Read Override csv file
-$override_file = file("override.csv");
 
-//open error log file
-$error_log_file = fopen("error_log_file.txt", "w");
+//Define my function
+//Adding crop code and name
 
-//crop codes transformed to name
-$var = new county('W', 'Wheat');
-$var2 = new county('B', 'Barley');
-$var3 = new county('M', 'Maize');
-$var4 = new county('BE', 'Beetroot');
-$var5 = new county('C', 'Carrot');
-$var6 = new county('PO', 'Potatoes');
-$var7 = new county('PA', 'Parsnips');
-$var8 = new county('O', 'Oats');
+function crop_code_name($crop_code, $crop_name){
+    global $array_of_county_code;
+     array_push ($array_of_county_code, new CropCodeName($crop_code, $crop_name));
+}
+
+//function to obtain override csv array
+function csv_array($csv_file){
+    foreach($csv_file as $k)
+$csv[] = explode(", ", $k);
+return $csv;
+}
+
+//Function to check whether county and crop codes exist in override file
+function check_county_code($harvest_array, $override_array){
+    for($row=0; $row<count($harvest_array);$row++){
+        for ($o_row=0; $o_row<count($override_array); $o_row++){
+            if($harvest_array[$row][0] == $override_array[$o_row][0]){
+                for($io_row=1; $io_row<count($override_array[$o_row]); $io_row++){
+                  //var added check only once if override crop exist in harvest data crop code
+                  $added = false;
+                  for($ih_row=1; $ih_row<count($harvest_array[$row]); $ih_row ++){
+
+                  }
+
+                }
+            }
+        }
+    }
+}
 
 //array of crop codes and names
 $array_of_county_code = array($var, $var2, $var3, $var4, $var5, $var6, $var7, $var8);
