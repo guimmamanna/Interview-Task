@@ -47,7 +47,7 @@ foreach ($file as $k)
         for($in_row=1; $in_row<count($csv2[$row]); $in_row++){
             //Check error
             if(intval($csv2[$row][$in_row])){
-                fwrite($error_log_file, "problem, Error on line  : ".($row+1)." , ". $csv2[$row][$in_row]. " not crop code. \n");
+                fwrite($error_log_file, "There is an Error on line  : ".($row+1)." , ". $csv2[$row][$in_row]. " its not a crop code. \n");
                 $in_row = $in_row+1;
                 continue;
             }elseif ($csv2[$row][$in_row] == ""){
