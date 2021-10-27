@@ -1,5 +1,5 @@
 <?php
-class county{
+class CropCodeName{
     public $crop_code;
     public $crop_name;
     function __construct ($code,$code_name)
