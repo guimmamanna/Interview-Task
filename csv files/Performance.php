@@ -77,7 +77,7 @@ crop_code_name('O', 'Oats');
 $override_array = csv_array($override_csv_file);
 
 //Get harvest array from harvest csv file
-$harvest_array = csv_array(($file);
+$harvest_array = csv_array($file);
 
 //check if there is a duplicate in override file
 $csv2 = check_county_code($harvest_array, $override_array);
