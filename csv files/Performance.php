@@ -4,7 +4,6 @@ include('class.php');
 //Global variables
 $array_of_county_code = array();
 
-
 //Define my function
 //Adding crop code and name
 
@@ -37,6 +36,8 @@ function check_county_code($harvest_array, $override_array){
                       //if crop code does not exist in harvest file add them
                       if(!in_array($override_array[$o_row][$io_row], $harvest_array[$row]) && !$added){
                           //add override crop in harvest crop data
+                          array_push($harvest_array[$row], $override_array[$o_row][$io_row]);
+                          array_push($harvest_array[$row], $override_array[$o_row][$io_row] +1);
                           $added = true;
                       }
                       $ih_row += 1;
