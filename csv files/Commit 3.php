@@ -117,9 +117,9 @@ $sum_per_county = array();
             }
 
             //Display county crop code names
-            foreach($array_of_county_code as $sub_region){
-                if(strtoupper($csv2[$row][$in_row]) == $sub_region->crop_code){
-                    $csv2[$row][$in_row] = $sub_region->crop_name;
+            foreach($array_of_county_code as $sub_county){
+                if(strtoupper($csv2[$row][$in_row]) == $sub_county->crop_code){
+                    $csv2[$row][$in_row] = $sub_county->crop_name;
                 }
             }
             print("<tr> <th>".$csv2[$row][0]."</th>");
