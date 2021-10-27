@@ -29,17 +29,54 @@ function check_county_code($harvest_array, $override_array){
                   //var added check only once if override crop exist in harvest data crop code
                   $added = false;
                   for($ih_row=1; $ih_row<count($harvest_array[$row]); $ih_row ++){
-
-                  }
+                      //check if crop code from override exists in harvest data file
+                      if($override_array[$o_row][$io_row] == $harvest_array[$row] [$ih_row]){
+                          //override existing crop quantity
+                          $harvest_array[$row] [$ih_row+1] =$override_array[$o_row][$io_row+1];
+                      }
+                      //if crop code does not exist in harvest file add them
+                      if(!in_array($override_array[$o_row][$io_row], $harvest_array[$row]) && !$added){
+                          //add override crop in harvest crop data
+                          $added = true;
+                      }
+                      $ih_row += 1;
+                      }
+                      $io_row += 1;
 
                 }
             }
         }
     }
+    return $harvest_array;
 }
 
-//array of crop codes and names
-$array_of_county_code = array($var, $var2, $var3, $var4, $var5, $var6, $var7, $var8);
+//Read harvest data file
+$file = file("harvest_data_clean.csv");
+
+//Read Override csv file
+$override_file = file("override.csv");
+
+//Open and Write error log file
+$error_log_file = fopen("error_log_file.txt", "w");
+
+//Open and Write override file
+$error_log_file = fopen("error_log_file.txt", "w");
+
+//add crop codes and names
+crop_code_name('W', 'Wheat');
+crop_code_name('B', 'Barley');
+crop_code_name('M', 'Maize');
+crop_code_name('BE', 'Beetroot');
+crop_code_name('C', 'Carrot');
+crop_code_name('PO', 'Potatoes');
+crop_code_name('PA', 'Parsnips');
+crop_code_name('O', 'Oats');
+
+
+//Get override array from override csv file
+$override_array = csv_array($override_csv_file);
+
+//Get harvest array from harvest csv file
 
 foreach ($file as $k)
     //Obtain an array call csv2 from the csv file
